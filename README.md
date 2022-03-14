@@ -7,6 +7,32 @@
 
 ### Prof. Alaelson Jatobá
 
+# CONFIGURAÇÕES DAS INTERFACES DE REDE
+
+| IP da Subrede:  |  10.9.14.0/24  | 192.168.14.48/29  | 
+| ------------------- | ------------------- | ------------------- |
+|IP de Broadcast: |  10.9.14.255/24 | 192.168.14.55 | 
+|IP do GW:| ens160: 10.9.14.128 | ens192: 192.168.14.49| 
+|IP do SAMBA:| ens160: 10.9.14.122 | ens192: 192.168.14.50| 
+|IP do NS1: | ens160: 10.9.14.107 | ens192: 192.168.14.51| 
+|IP do NS2:| ens160: 10.9.14.117| ens192: 192.168.14.52| 
+|IP do WEB | ens160: 10.9.14.223 | ens192: 192.168.14.53|
+|IP do BD| ens160: 10.9.14.224 | ens192: 192.168.14.54|
+
+
+# Definição de Nomes e Domínio (<grupo>.<turma>.ifalara.local):
+	
+| VM  |  Domínio (zona): | grupo7.turma914.ifalara.local  | 
+| ------------------- | ------------------- | ------------------- |
+|Aluno28 |  FQDN do GW: | gw.grupo7.turma914.ifalara.local | 
+|Aluno22| FQDN do SAMBA: | smb.grupo7.turma914.ifalara.local| 
+|Aluno07| FQDN do NS1:| ns1.grupo7.turma914.ifalara.local| 
+|Aluno17 | FQDN do NS2: | ns2.grupo7.turma914.ifalara.local| 
+|Grupo7VM(www)| FQDN do WEB| www.grupo7.turma914.ifalara.local| 
+|Grupo7VM(bd) | FQDN do BD | bd.grupo7.turma914.ifalara.local|	
+	
+
+
 ### NS1
 
 
@@ -67,7 +93,7 @@ smb.grupo7.turma914.ifalara.local.	  IN	A	10.9.14.122
 www.grupo7.turma914.ifalara.local.	  IN 	A	10.9.14.223
 bd.grupo7.turma914.ifalara.local.	  IN 	A	10.9.14.224
 
-IMG (/ns1/zonaDireta.PNG)
+![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/zonaDireta.PNG)
 ---
 
 Vamos editar o arquivo "db.10.9.14.rev":
@@ -98,7 +124,7 @@ $TTL    604800
 223   IN      PTR     www.grupo7.turma914.ifalara.local.
 224   IN      PTR     bd.grupo7.turma914.ifalara.local.
 
-IMG (/ns1/zonaReversa.PNG)
+![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/zonaReversa.PNG)
 ---
 
 3- Vamos ativar as zonas, então devesse configurar o arquivo "named.conf.local":
@@ -130,7 +156,7 @@ zone "14.9.10.in-addr.arpa" IN {
 
 Em zones tem que ter o nome de dominio escolhido. Em "allow-transfer" o IP é o do ns2, ou seja Slave.
 
-IMG (/ns1/namedConfLocal.PNG)
+![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/namedConfLocal.PNG)
 ---
 
 4- Agora vamos verificar a sintax dos arquivos que editamos.
