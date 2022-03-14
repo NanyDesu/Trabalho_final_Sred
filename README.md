@@ -36,37 +36,54 @@
 ### NS1
 
 
-Nesta maquina ns1 vamos configurar o serviço de resolução de nome (DNS) com o Bind9, utilizando à como DNS Master. 
+#### VM configurada com (DNS) e o Bind9, utilizando à como DNS Master. 
 
-0- Primeiro vamos mudar o nome da maquina para o nome escolhhido que está na tabela:
+ Vamos iniciar mudando o nome da maquina
 > ns1.grupo7.turma914.ifalara.local
-Com o comando:
+##### para realizar tal ato, primeiro iremos precisar utilizar o seguinte comando:
+	
+```	
 $ sudo hostnamectl set-hostname ns1.grupo7.turma914.ifalara.local
-
+```
+	
 1- Como primeiro devemos instalar o bind9.
 Mas primeiro vamos fazer um update:
+```	
 $ sudo apt update
+```
 Agora vamos instalar o bind:
+```
 $ sudo apt-get install bind9 dnsutils bind9-doc
+```
 Em seguida vamos verificar se o Bind9 está funcionando:
+```
 $ sudo systemctl status bind9
+```
 ---
 
 2- Vamos configurar os arquivos de zonas.
 Mas primeiro vamos criar o diretorio zones para alocar os nossos arquivos de zonas, com: 
+```
 $ sudo mkdir /etc/bind/zones
+```
 Agora vamos copiar os arquivos para a pasta zones.
 
 Zona Direta:
+```
 $ sudo cp /etc/bind/db.empty /etc/bind/zones/db.grupo7.turma914.ifalara.local
-Obs.: grupo7.turma914.ifalara.local é o nome do dominio escolhido pelo grupo 7;
+```
+Criamos: grupo7.turma914.ifalara.local como nome do dominio.
 
 Zona Reversa:
+```
 $  sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.14.rev
-Obs.: 10.9.14 é o nosso espaço de rede;
+```
+
 
 Vamos editar o arquivo "db.grupo7.turma914.ifalara.local":
+```
 $ sudo nano /etc/bind/zones/db.grupo4.turma914.ifalara.local
+```
 Nele vamos colocar os DNS e os IPs:
 
 RESULTADO
