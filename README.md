@@ -39,51 +39,90 @@
 #### VM configurada com (DNS) e o Bind9, utilizando à como DNS Master. 
 
  Vamos iniciar mudando o nome da maquina ns1.grupo7.turma914.ifalara.local, e para realizar tal ato, primeiro iremos precisar utilizar o seguinte comando:
+	
+	
  
 ```	
 $ sudo hostnamectl set-hostname ns1.grupo7.turma914.ifalara.local
 ```
 	
+	
+	
+	
 ##### Vamos realizar um update e instalar o bind9.
 
+	
+	
 ```	
 $ sudo apt update
 ```
+	
+	
 
 ```
 $ sudo apt-get install bind9 dnsutils bind9-doc
 ```
+	
+	
+	
 ##### Verificação do Bind9 :
+	
+	
 ```
 $ sudo systemctl status bind9
 ```
+	
 ---
 
 #####  configuração de arquivos de zonas.
 iremos precisar de um diretorio zones onde os nossos arquivos de zonas serão armazenados. Para realizar tal tarefa iremos utilizar o seguinte codigo: 
+	
+	
 ```
 $ sudo mkdir /etc/bind/zones
 ```
+	
+
+	
 --> Enviar arquivos para a pasta zones.
 
 Zona Direta:
+
+
+	
 ```
 $ sudo cp /etc/bind/db.empty /etc/bind/zones/db.grupo7.turma914.ifalara.local
 ```
+	
+	
 --> grupo7.turma914.ifalara.local nome de dominio
 
 Zona Reversa:
+	
+	
+	
+	
 ```
 $  sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.14.rev
 ```
 
+	
+	
 
----> editar arquivo "db.grupo7.turma914.ifalara.local" ---> colocar ip´s e dns::
+---> editar arquivo "db.grupo7.turma914.ifalara.local" ---> colocar ip´s e dns:
+	
+	
+	
 ```
 $ sudo nano /etc/bind/zones/db.grupo4.turma914.ifalara.local
 ```
+	
+	
 
 #### Iremos obter a seguinte resposta:
+	
+	
+	
 ```
 ;
 ; BIND data file for internal network
@@ -108,14 +147,28 @@ smb.grupo7.turma914.ifalara.local.	  IN	A	10.9.14.122
 www.grupo7.turma914.ifalara.local.	  IN 	A	10.9.14.223
 bd.grupo7.turma914.ifalara.local.	  IN 	A	10.9.14.224
 ```
+	
+	
+	
+	
+---	
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/zonaDireta.PNG)
 ---
 
+	
+	
 ---> editar o arquivo "db.10.9.14.rev" onde mais uma vez iremos adicionar os ip´s e os dns:
+	
+
 ```
 $ sudo nano /etc/bind/zones/db.10.9.14.rev
-
+```
+	
+	
 #### Iremos obter a seguinte resposta:
+	
+	
+	
 ```
 ;
 ; BIND reverse data file of reverse zone for local area network 10.9.14.0/24
@@ -141,14 +194,27 @@ $TTL    604800
 224   IN      PTR     bd.grupo7.turma914.ifalara.local.
 ```
 
+	
+---	
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/zonaReversa.PNG)
 ---
+	
+	
 
 ##### Para tornar as zonas ativas , precisamos configurar o arquivo "named.conf.local":
+	
+	
 ```	
 $  sudo nano /etc/bind/named.conf.local
 ```
+	
+---	
 #### Iremos obter a seguinte resposta:
+---	
+	
+	
+	
+	
 ```	
 //
 // Do any local configuration here
@@ -173,48 +239,96 @@ zone "14.9.10.in-addr.arpa" IN {
 	allow-transfer{ 10.9.14.117; };
 };
 ```
+	
+	
+	
 Nas zones devemos escolher um nome de dominio, Em "allow-transfer" o IP é o do ns2, ou seja Slave.
-
+	
+	
+---
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/namedConfLocal.PNG)
 ---
 
 
 ##### Iremos verificar a sintax do arquivo named.conf.local usando:
+	
+	
+	
 ```
 $ sudo named-checkconf
 ```
+	
+---	
 ---> para entrar no diretório zones utilize o comando abaixo:
+---	
+
+	
 ```
 $ cd /etc/bind/zones
 ```
+	
+	
+	
+	
 e para garantir que "db.grupo4.turma914.ifalara.local" está funcionando:
+	
+	
+	
+	
 ```
 $ sudo named-checkzone grupo4.turma914.ifalara.local db.grupo7.turma914.ifalara.local
 ```
+	
+	
+	
 #### Iremos obter a seguinte resposta:
-...
+
+	
+	
+	
+	
+	
 ```
 zone grupo7.turma914.ifalara.local/IN: loaded serial 1
 OK
 ```
+	
+---	
 Iremos Verificar se o arquivo "db.10.9.14.rev" está certo a partir de.
+---	
+
+	
 ```
 $ sudo named-checkzone 14.9.10.in-addr.arpa db.10.9.14.rev
 ```	
+	
 #### Iremos obter a seguinte resposta:
-...	
+	
 ```
 zone 14.9.10.in-addr.arpa/IN: loaded serial 1
 OK
 ```
+	
+	
+	
 ---
 
+	
+	
 ##### Devemos então realizar uma configuração para apenas IPv4.
 No arquivo name vamos adicionar "-4" na linha "OPTINS=-u bind"
+	
+	
+	
 ```
 $ sudo nano /etc/default/named
 ```
+	
+	
 #### Iremos obter a seguinte resposta:
+	
+	
+	
 ```
 # run resolvconf?
 RESOLVCONF=no
@@ -264,5 +378,6 @@ $ systemd-resolve --status ens160
 ```
 $ ping google.com
 ```
+	
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/dig-system_resolve-ping.PNG)
----
+
