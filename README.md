@@ -38,20 +38,18 @@
 
 #### VM configurada com (DNS) e o Bind9, utilizando à como DNS Master. 
 
- Vamos iniciar mudando o nome da maquina
-> ns1.grupo7.turma914.ifalara.local
-##### para realizar tal ato, primeiro iremos precisar utilizar o seguinte comando:
-	
+ Vamos iniciar mudando o nome da maquina ns1.grupo7.turma914.ifalara.local, e para realizar tal ato, primeiro iremos precisar utilizar o seguinte comando:
+ 
 ```	
 $ sudo hostnamectl set-hostname ns1.grupo7.turma914.ifalara.local
 ```
 	
-##### Devemos instalar o bind9.
-Mas primeiro vamos fazer um update:
+##### Vamos realizar um update e instalar o bind9.
+
 ```	
 $ sudo apt update
 ```
-Agora vamos instalar o bind:
+
 ```
 $ sudo apt-get install bind9 dnsutils bind9-doc
 ```
@@ -80,11 +78,10 @@ $  sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.14.rev
 ```
 
 
----> editar arquivo "db.grupo7.turma914.ifalara.local":
+---> editar arquivo "db.grupo7.turma914.ifalara.local" ---> colocar ip´s e dns::
 ```
 $ sudo nano /etc/bind/zones/db.grupo4.turma914.ifalara.local
 ```
----> colocar ip´s e dns:
 
 #### Iremos obter a seguinte resposta:
 ```
@@ -114,9 +111,9 @@ bd.grupo7.turma914.ifalara.local.	  IN 	A	10.9.14.224
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/zonaDireta.PNG)
 ---
 
----> editar o arquivo "db.10.9.14.rev":
+---> editar o arquivo "db.10.9.14.rev" onde mais uma vez iremos adicionar os ip´s e os dns:
+```
 $ sudo nano /etc/bind/zones/db.10.9.14.rev
-onde mais uma vez iremos adicionar os ip´s e os dns:
 
 #### Iremos obter a seguinte resposta:
 ```
@@ -186,7 +183,7 @@ Nas zones devemos escolher um nome de dominio, Em "allow-transfer" o IP é o do 
 ```
 $ sudo named-checkconf
 ```
-para entrar no diretório zones utilize o comando abaixo:
+---> para entrar no diretório zones utilize o comando abaixo:
 ```
 $ cd /etc/bind/zones
 ```
