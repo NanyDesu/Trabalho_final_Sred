@@ -72,7 +72,7 @@ Zona Direta:
 ```
 $ sudo cp /etc/bind/db.empty /etc/bind/zones/db.grupo7.turma914.ifalara.local
 ```
-Criamos: grupo7.turma914.ifalara.local como nome do dominio.
+--> grupo7.turma914.ifalara.local nome de dominio
 
 Zona Reversa:
 ```
@@ -80,11 +80,11 @@ $  sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.14.rev
 ```
 
 
-vamos precisar editar este arquivo "db.grupo7.turma914.ifalara.local":
+---> editar arquivo "db.grupo7.turma914.ifalara.local":
 ```
 $ sudo nano /etc/bind/zones/db.grupo4.turma914.ifalara.local
 ```
-e nele colocar tanto os ip´s quanto os dns:
+---> colocar ip´s e dns:
 
 #### Iremos obter a seguinte resposta:
 ```
@@ -114,7 +114,7 @@ bd.grupo7.turma914.ifalara.local.	  IN 	A	10.9.14.224
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/zonaDireta.PNG)
 ---
 
-para continuar o processo se faz necessário editar o arquivo "db.10.9.14.rev":
+---> editar o arquivo "db.10.9.14.rev":
 $ sudo nano /etc/bind/zones/db.10.9.14.rev
 onde mais uma vez iremos adicionar os ip´s e os dns:
 
@@ -230,10 +230,11 @@ OPTIONS="-4 -u bind"
 ```
 $ sudo systemctl restart bind9
 ```
-7- Agora vamos configurar as nossas interfaces, ens160 e ens192:
+##### Configuração de interface:
 ```
 $ sudo nano /etc/netplan/00-installer-config.yaml
-Na interface ens160 vamos retirar os endereços de IPs e adiconaremos os indereçoes do Master e Sleve.
+	
+---> Para a ens160 vamos manter apenas os endereçoes do Master e Sleve.
 ```	
 #### Iremos obter a seguinte resposta:
 ```
@@ -252,17 +253,17 @@ network:
       addresses: [192.168.14.51/29]
   version: 2
 ```
-8- Agora vamos testar o DNS Marter.
+#### teste do DNS Marter.
 ```
 $ dig @10.9.14.128 gw.grupo7.turma914.ifalara.local
 ```
-Na linha "ANSWER SECTION:" tem que aparecer que foi resolvido, com o dominio e o IP.
+---> Na linha "ANSWER SECTION:" precisa aparecr o dominio e o IP juntamente com a informação se foi resolvido ou não.
 
-Vamos usar o seguinte comando para verificar se a interface 160 está funcionando:
+---> verificando se a interface 160 está funcionando:
 ```
 $ systemd-resolve --status ens160
 ```
-Para finalizar vamos ver se o nosso serviço DNS revolve o DNS do google:
+---> Teste: revolvendo o DNS do google:
 ```
 $ ping google.com
 ```
