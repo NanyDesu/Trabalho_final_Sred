@@ -46,7 +46,7 @@
 $ sudo hostnamectl set-hostname ns1.grupo7.turma914.ifalara.local
 ```
 	
-1- Como primeiro devemos instalar o bind9.
+##### Devemos instalar o bind9.
 Mas primeiro vamos fazer um update:
 ```	
 $ sudo apt update
@@ -55,18 +55,18 @@ Agora vamos instalar o bind:
 ```
 $ sudo apt-get install bind9 dnsutils bind9-doc
 ```
-Em seguida vamos verificar se o Bind9 está funcionando:
+##### Verificação do Bind9 :
 ```
 $ sudo systemctl status bind9
 ```
 ---
 
-2- Vamos configurar os arquivos de zonas.
-Mas primeiro vamos criar o diretorio zones para alocar os nossos arquivos de zonas, com: 
+#####  configuração de arquivos de zonas.
+iremos precisar de um diretorio zones onde os nossos arquivos de zonas serão armazenados. Para realizar tal tarefa iremos utilizar o seguinte codigo: 
 ```
 $ sudo mkdir /etc/bind/zones
 ```
-Agora vamos copiar os arquivos para a pasta zones.
+--> Enviar arquivos para a pasta zones.
 
 Zona Direta:
 ```
@@ -80,13 +80,14 @@ $  sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.14.rev
 ```
 
 
-Vamos editar o arquivo "db.grupo7.turma914.ifalara.local":
+vamos precisar editar este arquivo "db.grupo7.turma914.ifalara.local":
 ```
 $ sudo nano /etc/bind/zones/db.grupo4.turma914.ifalara.local
 ```
-Nele vamos colocar os DNS e os IPs:
+e nele colocar tanto os ip´s quanto os dns:
 
-RESULTADO
+#### Iremos obter a seguinte resposta:
+```
 ;
 ; BIND data file for internal network
 ;
@@ -109,15 +110,16 @@ gw.grupo7.turma914.ifalara.local.	  IN 	A	10.9.14.128
 smb.grupo7.turma914.ifalara.local.	  IN	A	10.9.14.122
 www.grupo7.turma914.ifalara.local.	  IN 	A	10.9.14.223
 bd.grupo7.turma914.ifalara.local.	  IN 	A	10.9.14.224
-
+```
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/zonaDireta.PNG)
 ---
 
-Vamos editar o arquivo "db.10.9.14.rev":
+para continuar o processo se faz necessário editar o arquivo "db.10.9.14.rev":
 $ sudo nano /etc/bind/zones/db.10.9.14.rev
-Nele vamos colocar os DNS e os IPs:
+onde mais uma vez iremos adicionar os ip´s e os dns:
 
-RESULTADO
+#### Iremos obter a seguinte resposta:
+```
 ;
 ; BIND reverse data file of reverse zone for local area network 10.9.14.0/24
 ;
@@ -140,14 +142,17 @@ $TTL    604800
 122   IN      PTR     smb.grupo7.turma914.ifalara.local.
 223   IN      PTR     www.grupo7.turma914.ifalara.local.
 224   IN      PTR     bd.grupo7.turma914.ifalara.local.
+```
 
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/zonaReversa.PNG)
 ---
 
-3- Vamos ativar as zonas, então devesse configurar o arquivo "named.conf.local":
+##### Para tornar as zonas ativas , precisamos configurar o arquivo "named.conf.local":
+```	
 $  sudo nano /etc/bind/named.conf.local
-
-RESULTADO
+```
+#### Iremos obter a seguinte resposta:
+```	
 //
 // Do any local configuration here
 //
@@ -170,51 +175,68 @@ zone "14.9.10.in-addr.arpa" IN {
 	file "/etc/bind/zones/db.10.9.14.rev";
 	allow-transfer{ 10.9.14.117; };
 };
-
-Em zones tem que ter o nome de dominio escolhido. Em "allow-transfer" o IP é o do ns2, ou seja Slave.
+```
+Nas zones devemos escolher um nome de dominio, Em "allow-transfer" o IP é o do ns2, ou seja Slave.
 
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/namedConfLocal.PNG)
 ---
 
-4- Agora vamos verificar a sintax dos arquivos que editamos.
-Para checar a sintax do arquivo named.conf.local usamos:
+
+##### Iremos verificar a sintax do arquivo named.conf.local usando:
+```
 $ sudo named-checkconf
-Vamos entrar no diretório zones:
+```
+para entrar no diretório zones utilize o comando abaixo:
+```
 $ cd /etc/bind/zones
-Vamos Verificar se o arquivo "db.grupo4.turma914.ifalara.local" está ok.
+```
+e para garantir que "db.grupo4.turma914.ifalara.local" está funcionando:
+```
 $ sudo named-checkzone grupo4.turma914.ifalara.local db.grupo7.turma914.ifalara.local
-RESULTADO
+```
+#### Iremos obter a seguinte resposta:
 ...
+```
 zone grupo7.turma914.ifalara.local/IN: loaded serial 1
 OK
-
-Vamos Verificar se o arquivo "db.10.9.14.rev" está ok.
+```
+Iremos Verificar se o arquivo "db.10.9.14.rev" está certo a partir de.
+```
 $ sudo named-checkzone 14.9.10.in-addr.arpa db.10.9.14.rev
-RESULTADO
+```	
+#### Iremos obter a seguinte resposta:
 ...	
+```
 zone 14.9.10.in-addr.arpa/IN: loaded serial 1
 OK
-
+```
 ---
 
-5- Vamos configurar para resolver apenas IPv4.
-Entraremos no arquivo name e adicionaremos "-4" na linha "OPTINS=-u bind":
+##### Devemos então realizar uma configuração para apenas IPv4.
+No arquivo name vamos adicionar "-4" na linha "OPTINS=-u bind"
+```
 $ sudo nano /etc/default/named
-RESULTADO
+```
+#### Iremos obter a seguinte resposta:
+```
 # run resolvconf?
 RESOLVCONF=no
-
 # startup options for the server
 OPTIONS="-4 -u bind"
+```
 ---
 
-6- Vamos reiniciar o bind, com:
+#### Reinicindo o bind:
+```
 $ sudo systemctl restart bind9
-
+```
 7- Agora vamos configurar as nossas interfaces, ens160 e ens192:
+```
 $ sudo nano /etc/netplan/00-installer-config.yaml
 Na interface ens160 vamos retirar os endereços de IPs e adiconaremos os indereçoes do Master e Sleve.
-RESULTADO
+```	
+#### Iremos obter a seguinte resposta:
+```
 network:
   ethernets:
     ens160:
@@ -229,14 +251,20 @@ network:
     ens192:
       addresses: [192.168.14.51/29]
   version: 2
-
+```
 8- Agora vamos testar o DNS Marter.
+```
 $ dig @10.9.14.128 gw.grupo7.turma914.ifalara.local
+```
 Na linha "ANSWER SECTION:" tem que aparecer que foi resolvido, com o dominio e o IP.
 
 Vamos usar o seguinte comando para verificar se a interface 160 está funcionando:
+```
 $ systemd-resolve --status ens160
+```
 Para finalizar vamos ver se o nosso serviço DNS revolve o DNS do google:
+```
 $ ping google.com
-(IMG: dig-system_resolve-ping.PNG)
+```
+![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/dig-system_resolve-ping.PNG)
 ---
