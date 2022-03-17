@@ -1,9 +1,8 @@
-# INSTITUTO FEDERAL DE ALAGOAS - CAMPUS ARAPIRACA
-## Alunos:
-- ELAINE CLIS DE MENEZES SILVA - 914
-- RONALD EMANUEL DOS SANTOS SILVA - 914
-- MARIA THAYSE NASCIMENTO DA SILVA - 914
-- LUCAS EMANUEL LIMA DA SILVA - 914
+# SERVIÇO DE REDES / PROJETO E INFRAESTRUTURA DE REDES
+
+##### ELAINE CLIS DE MENEZES SILVA - 914
+##### MARIA THAYSE NASCIMENTO DA SILVA - 914
+##### LUCAS EMANUEL LIMA DA SILVA - 914
 
 ### Prof. Alaelson Jatobá
 
@@ -36,18 +35,14 @@
 ### NS1
 
 
-#### VM configurada com (DNS) e o Bind9, utilizando à como DNS Master. 
+#### VM configurada com (DNS) e o Bind9, utilizando-a como DNS Master. 
 
- Vamos iniciar mudando o nome da maquina ns1.grupo7.turma914.ifalara.local, e para realizar tal ato, primeiro iremos precisar utilizar o seguinte comando:
-	
-	
  
 ```	
 $ sudo hostnamectl set-hostname ns1.grupo7.turma914.ifalara.local
 ```
 	
-	
-	
+
 	
 ##### Vamos realizar um update e instalar o bind9.
 
@@ -74,7 +69,7 @@ $ sudo systemctl status bind9
 	
 ---
 
-#####  configuração de arquivos de zonas.
+#####  Configuração de arquivos de zonas.
 iremos precisar de um diretorio zones onde os nossos arquivos de zonas serão armazenados. Para realizar tal tarefa iremos utilizar o seguinte codigo: 
 	
 	
