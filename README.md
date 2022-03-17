@@ -109,7 +109,7 @@ $  sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.14.rev
 	
 	
 ```
-$ sudo nano /etc/bind/zones/db.grupo4.turma914.ifalara.local
+$ sudo nano /etc/bind/zones/db.grupo7.turma914.ifalara.local
 ```
 	
 	
@@ -223,7 +223,7 @@ Nele vamos adicionas as seguintes linhas de codigos logo a baixo, pulando uma li
 
 zone "grupo7.turma914.ifalara.local" {
 	type master;
-	file "/etc/bind/zones/db.grupo4.turma914.ifalara.local";
+	file "/etc/bind/zones/db.grupo7.turma914.ifalara.local";
 	allow-transfer{ 10.9.14.117; };  
 	allow-query{any;};
 };
@@ -265,13 +265,13 @@ $ cd /etc/bind/zones
 	
 	
 	
-e para garantir que "db.grupo4.turma914.ifalara.local" está funcionando:
+e para garantir que "db.grupo7.turma914.ifalara.local" está funcionando:
 	
 	
 	
 	
 ```
-$ sudo named-checkzone grupo4.turma914.ifalara.local db.grupo7.turma914.ifalara.local
+$ sudo named-checkzone grupo7.turma914.ifalara.local db.grupo7.turma914.ifalara.local
 ```
 	
 	
@@ -365,7 +365,7 @@ $ dig @10.9.14.128 gw.grupo7.turma914.ifalara.local
 ```
 ---> Na linha "ANSWER SECTION:" precisa aparecr o dominio e o IP juntamente com a informação se foi resolvido ou não.
 
----> verificando se a interface 160 está funcionando:
+---> Para verificar a funcionalidade da 160:
 ```
 $ systemd-resolve --status ens160
 ```
