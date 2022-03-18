@@ -387,6 +387,7 @@ $ ping google.com
 ```
 $ sudo hostnamectl set-hostname ns2.grupo7.turma914.ifalara.local
 ```
+---
 
 ---> Depois iremos configurar essa maquina como cliente do serviço DNS. 
 
@@ -424,6 +425,7 @@ $ sudo netplan apply
 ```
 $ systemd-resolve --status ens160
 ```
+---
 
 ---> Para finalizar o processo iremos ver se o nosso serviço DNS revolve o DNS do google:
 $ ping google.com
@@ -434,6 +436,7 @@ $ ping google.com
 ```
 $ sudo apt update
 ```
+---
 
 ---> Vamos instalar o apache2 na versão que utilizaremos:
 ```
@@ -474,6 +477,7 @@ Mar 12 00:00:37 www systemd[1]: Reloaded The Apache HTTP Server.
 ![](/www/status_apache2.PNG)
 
 -- Então para acessar o servidor web basta ir ao navegador e colocar o IP da maquina "www", onde foi feita a instalação do Aopache2.
+---
 
 ---> Iremos criar o nosso site. Primeiro vamos criar um diretorio com o nome do nosso domínio, utilisando:
 ```
