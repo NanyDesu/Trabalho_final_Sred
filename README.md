@@ -531,6 +531,7 @@ $ sudo apache2ctl configtest
 ```
 $ sudo systemctl restart apache2
 ```
+---	
 ---> Pronto agora é só acessar novamente no navegador com o IP da máquina. 
 ![](/www/a2ensite-configtest-restart.PNG)
 ![](/www/site.PNG)
