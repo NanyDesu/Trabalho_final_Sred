@@ -332,7 +332,7 @@ OPTIONS="-4 -u bind"
 ```
 ---
 
-#### Reinicindo o bind:
+#### Reiniciando o bind:
 ```
 $ sudo systemctl restart bind9
 ```
