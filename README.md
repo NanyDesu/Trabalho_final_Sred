@@ -395,7 +395,8 @@ $ sudo hostnamectl set-hostname bd.grupo4.turma914.ifalara.local
 ![hostname](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/BD/hostname.PNG)
 
 
-#### Para configurar a maquina como cliente do serviço DNS, vamos precisar configurar as interfaces de rede e adicionar os IPs de DNS e o campo "search", no arquivo de configuração.
+#### Vamos configurar a maquina como cliente do serviço DNS.
+ Para isso vamos precisar configurar as interfaces de rede e adicionar os IPs de DNS e o campo "search", no arquivo de configuração.
 
 
 ```
