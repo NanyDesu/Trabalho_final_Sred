@@ -430,7 +430,7 @@ $ systemd-resolve --status ens160
 ---> Para finalizar o processo iremos ver se o nosso serviço DNS revolve o DNS do google:
 ````
 $ ping google.com
-![](/www/dig-system_resolve-ping.PNG)
+![](/WWW/dig-system_resolve-ping.PNG)
 ```
 ---
 
@@ -476,7 +476,7 @@ Mar 12 00:00:37 www systemd[1]: Reloading The Apache HTTP Server.
 Mar 12 00:00:37 www apachectl[129422]: AH00558: apache2: Could not reliably determine the ser>
 Mar 12 00:00:37 www systemd[1]: Reloaded The Apache HTTP Server.
 ```
-![](/www/status_apache2.PNG)
+![](/WWW/status_apache2.PNG)
 ```
 -- Então para acessar o servidor web basta ir ao navegador e colocar o IP da maquina "www", onde foi feita a instalação do Aopache2.
 ---
@@ -513,7 +513,7 @@ $ sudo nano /etc/apache2/sites-available/grupo7.turma914.ifalara.local.conf
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
-![](/www/domain_conf.PNG)
+![](/WWW/domain_conf.PNG)
 
 -- Em segida iremos habilitar o arquivo com a ferramenta a2ensite:
 ```
@@ -533,7 +533,7 @@ $ sudo systemctl restart apache2
 ```
 ---	
 ---> Pronto agora é só acessar novamente no navegador com o IP da máquina. 
-![](/www/a2ensite-configtest-restart.PNG)
+![](/WWW/a2ensite-configtest-restart.PNG)
 ![](/www/site.PNG)
 ----
 
