@@ -430,7 +430,7 @@ $ systemd-resolve --status ens160
 ---> Para finalizar o processo iremos ver se o nosso serviço DNS revolve o DNS do google:
 ````
 $ ping google.com
-![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/dig-system_resolve-ping.PNG)
+![hostname](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/dig-system_resolve-ping.PNG)
 ```
 ---
 
@@ -513,7 +513,7 @@ $ sudo nano /etc/apache2/sites-available/grupo7.turma914.ifalara.local.conf
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
-![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/domain_conf.PNG)
+![hostname](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/domain_conf.PNG)
 
 -- Em segida iremos habilitar o arquivo com a ferramenta a2ensite:
 ```
@@ -533,7 +533,7 @@ $ sudo systemctl restart apache2
 ```
 ---	
 ---> Pronto agora é só acessar novamente no navegador com o IP da máquina. 
-![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/a2ensite-configtest-restart.PNG)
+![hostname](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/a2ensite-configtest-restart.PNG)
 ![](/www/site.PNG)
 ----
 
