@@ -415,7 +415,7 @@ network:
 ```
 ![](/www/installer_confing.PNG)
 
-Em seguida vamos aplicar as alterações:
+-- Em seguida vamos aplicar as alterações:
 ```
 $ sudo netplan apply
 ```
