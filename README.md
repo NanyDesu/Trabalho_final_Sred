@@ -359,7 +359,7 @@ network:
       addresses: [192.168.14.51/29]
   version: 2
 ```
-#### Teste do DNS Marter.
+#### Teste do DNS Master.
 ```
 $ dig @10.9.14.128 gw.grupo7.turma914.ifalara.local
 ```
@@ -369,7 +369,7 @@ $ dig @10.9.14.128 gw.grupo7.turma914.ifalara.local
 ```
 $ systemd-resolve --status ens160
 ```
----> Teste: revolvendo o DNS do google:
+---> Teste: resolvendo o DNS do google:
 ```
 $ ping google.com
 ```
@@ -383,7 +383,7 @@ $ ping google.com
 
 
 
-#### Vamos fazer a configuração do servidor de banco de dados usando a ferramenta MySQL e configurar a maquina como cliente do serviço DNS. 
+#### Configurando o MySql: 
 
 
 #### Mudaremos o nome da maquina. 
@@ -395,8 +395,7 @@ $ sudo hostnamectl set-hostname bd.grupo4.turma914.ifalara.local
 ![hostname](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/BD/hostname.PNG)
 
 
-#### Vamos configurar a maquina como cliente do serviço DNS.
- Para isso vamos precisar configurar as interfaces de rede e adicionar os IPs de DNS e o campo "search", no arquivo de configuração.
+#### Vamos configurar a maquina para se tornar cliente do serviço DNS (precisaremos também configurar as interfaces de rede.
 
 
 ```
@@ -449,7 +448,7 @@ $ dig @10.9.14.126 gw.grupo4.turma914.ifalara.local
 $ systemd-resolve --status ens160
 ```
 
-#### Veja se o serviço DNS devolve o DNS do google:
+#### Veja se o serviço DNS está resolvendo o DNS do google:
 
 
 ```
