@@ -376,7 +376,7 @@ $ ping google.com
 	
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/NS1/dig-system_resolve-ping.PNG)
 
-
+---
 
 ### Página Web
 
