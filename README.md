@@ -615,7 +615,7 @@ $ ping google.com
 
 	
 	
-## Gateway
+### Gateway
 
 
 - Iremos configurar o servidor gateway como NAT
@@ -623,14 +623,14 @@ $ ping google.com
 
 #### Iniciando:
 
-```bash
+```
  sudo ufw enable
 ```
 
 (habilitar o firewall)
 
 
-```bash
+```
  sudo ufw allow ssh
 ```
 
@@ -639,14 +639,14 @@ $ ping google.com
 ![ufw eneble & allow ssh](https://github.com/NanyDesu/trab_sred/blob/main/imagens/pt3_ufw_nable.PNG)
 
 
-```bash
+```
  sudo nano /etc/ufw/sysctl.conf
 ``` 
 
 (encaminhamento de pacotes de wan para lan)
 
 
-```bash
+```
 ...
 net/ipv4/ip_forwarding=1
 ...
@@ -658,11 +658,11 @@ net/ipv4/ip_forwarding=1
 [/etc/ufw/sysctl.conf](https://github.com/NanyDesu/trab_sred/blob/main/imagens/pt4_sysctl_conf.PNG)
 
 
-```bash
+```
  ifconfig -a
 ```
 
-```bash
+```
 WAN interface: ens160
 LAN interface: ens192
 ```
@@ -673,11 +673,11 @@ LAN interface: ens192
 ![ifconfig -a](https://github.com/NanyDesu/trab_sred/blob/main/imagens/pt2_ifconfig.PNG)
 
 
-```bash
+```
  sudo nano /etc/rc.local
 ```
 
-```bash
+```
 #!/bin/bash
 # /etc/rc.local
 # Default policy to drop all incoming packets.
@@ -715,7 +715,7 @@ exit 0
 ![rclocal](https://github.com/NanyDesu/trab_sred/blob/main/imagens/pt5_rc_local.PNG)
 
 
-```bash
+```
  sudo chmod 755 /etc/rc.local
 ```
 
@@ -723,20 +723,20 @@ exit 0
 (tornando o arquivo executável)
 
 
-```bash
+```
  sudo ufw status
 ```
 
 ou 
 
-```bash
+```
  systemctl status ufw.service
 ```
 
 (verificando a atividade do firewall)
 
 
-```bash
+```
  sudo reboot
 ```
 
