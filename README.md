@@ -383,7 +383,7 @@ $ ping google.com
 -- Primeiro iremos mudar o nome da máquina:
 
 ```
-$ sudo hostnamectl set-hostname ns2.grupo7.turma914.ifalara.local
+$ sudo hostnamectl set-hostname www.grupo7.turma914.ifalara.local
 ```
 ---
 
@@ -399,16 +399,16 @@ network:
     ethernets:
         ens160:
           dhcp4: false
-          addresses: [10.9.14.217/24]
+          addresses: [10.9.14.117/24]
           gateway4: 10.9.14.1
           nameservers:
             addresses:
-               - 10.9.14.126
-               - 10.9.14.109
+               - 10.9.14.107
+               - 10.9.14.117
             search: [grupo7.turma914.ifalara.local]
         ens192:
           dhcp4: false
-          addresses: [192.168.0.29/29]
+          addresses: [192.168.0.53/29]
     version: 2
 ```
 ![](/www/installer_confing.PNG)
@@ -566,16 +566,16 @@ network:
     ethernets:
         ens160:
           dhcp4: false
-          addresses: [10.9.14.217/24]
+          addresses: [10.9.14.224/24]
           gateway4: 10.9.14.1
           nameservers:
             addresses:
-               - 10.9.14.126
-               - 10.9.14.109
+               - 10.9.14.107
+               - 10.9.14.117
             search: [grupo7.turma914.ifalara.local]
         ens192:
           dhcp4: false
-          addresses: [192.168.0.29/29]
+          addresses: [192.168.0.54/29]
     version: 2
 ```
 
@@ -765,8 +765,8 @@ iptables -A FORWARD -p tcp -d 10.9.14.100 –-dport 445 -j ACCEPT
 
 
 ```bash
-iptables -A PREROUTING -t nat -i ens160 -p tcp –-dport 53 -j DNAT –-to 10.9.14.126:53
-iptables -A FORWARD -p udp -d 10.9.14.126 –-dport 53 -j ACCEPT
+iptables -A PREROUTING -t nat -i ens160 -p tcp –-dport 53 -j DNAT –-to 10.9.14.103:53
+iptables -A FORWARD -p udp -d 10.9.14.103 –-dport 53 -j ACCEPT
 ```
 
 
