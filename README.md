@@ -380,19 +380,22 @@ $ ping google.com
 
 #### Configuração do servidor web da maquina "www" utilizando a ferramenta Apache2 e fazer a configuração da maquina como cliente do serviço DNS. 
 
--- Primeiro iremos mudar o nome da máquina:
+
+---> Primeiro iremos mudar o nome da máquina:
 
 ```
 $ sudo hostnamectl set-hostname www.grupo7.turma914.ifalara.local
 ```
----
 
 ---> Depois iremos configurar essa maquina como cliente do serviço DNS. 
 
 ```
 $ sudo nano /etc/netplan/00-installer-config.yaml
 ```
+
+
 #### Resultado
+
 ```
 #This is the network config written by 'subiquity'
 network:
@@ -411,45 +414,55 @@ network:
           addresses: [192.168.0.53/29]
     version: 2
 ```
+
 ![](/www/installer_confing.PNG)
 
--- Em seguida vamos aplicar as alterações:
+---> Em seguida vamos aplicar as alterações:
+
 ```
 $ sudo netplan apply
 ```
----
+
 
 ---> Na linha "ANSWER SECTION:" tem que aparecer que foi resolvido, com o dominio e o IP. Então iremos verificar se está funcionando:
+
 ```
 $ systemd-resolve --status ens160
 ```
----
+
 
 ---> Para finalizar o processo iremos ver se o nosso serviço DNS revolve o DNS do google:
-````
-$ ping google.com
-![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/dig-system_resolve-ping.PNG)
-```
----
 
--- Iremos instalar o apache e configura-lo para subir nosso servidor apacha, fazendo um update na nossa máquina, via apt:
+```
+$ ping google.com
+```
+
+![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/dig-system_resolve-ping.PNG)
+
+
+
+---> Iremos instalar o apache e configura-lo para subir nosso servidor apacha, fazendo um update na nossa máquina, via apt:
+
 ```
 $ sudo apt update
 ```
----
+
 
 ---> Vamos instalar o apache2 na versão que utilizaremos:
+
 ```
 $ sudo apt install apache2
 ```
----
+
 
 ---> Iremos verificar se o servidor web está funcionando:
 
 ```
 $ sudo systemctl status apache2
 ```
+
 #### Resultado:
+
 ```
 ● apache2.service - The Apache HTTP Server
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
@@ -474,33 +487,44 @@ Mar 12 00:00:37 www systemd[1]: Reloading The Apache HTTP Server.
 Mar 12 00:00:37 www apachectl[129422]: AH00558: apache2: Could not reliably determine the ser>
 Mar 12 00:00:37 www systemd[1]: Reloaded The Apache HTTP Server.
 ```
+
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/status_apache2.PNG)
-```
--- Então para acessar o servidor web basta ir ao navegador e colocar o IP da maquina "www", onde foi feita a instalação do Aopache2.
----
+
+---> Então para acessar o servidor web basta ir ao navegador e colocar o IP da maquina "www", onde foi feita a instalação do Aopache2.
+
 
 ---> Iremos criar o nosso site. Primeiro vamos criar um diretorio com o nome do nosso domínio, utilisando:
+
 ```
 $ sudo mkdir /var/www/grupo7.turma914.ifalara.local
 ```
--- Vamos atribuir a propriedade do diretório com a variável de ambiente $USER:
+
+---> Vamos atribuir a propriedade do diretório com a variável de ambiente $USER:
+
 ```
 $ sudo chown -R $USER:$USER /var/www/grupo7.turma914.ifalara.local
 ```
--- Agora vamos fazer as configurações das permições dos webs hosts, com:
+
+---> Agora vamos fazer as configurações das permições dos webs hosts, com:
+
 ```
 $ sudo chmod -R 755 /var/www/grupo7.turma914.ifalara.local
 ```
--- Depois vamos criar e editar a página index.html:
+
+---> Depois vamos criar e editar a página index.html:
+
 ```
 $ sudo nano /var/www/gupo7.turma914.ifalara.local/index.html
 ```
--- Pra apresentar a página criamos um arquivo de configuração:
+
+---> Pra apresentar a página criamos um arquivo de configuração:
 
 ```
 $ sudo nano /etc/apache2/sites-available/grupo7.turma914.ifalara.local.conf
 ```
---E neste arquivo iremos colocar o seguinte bloco de código:
+
+---> E neste arquivo iremos colocar o seguinte bloco de código:
+
 ```
 <VirtualHost *:80>
     ServerAdmin webmaster@localhost
@@ -511,29 +535,39 @@ $ sudo nano /etc/apache2/sites-available/grupo7.turma914.ifalara.local.conf
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
+
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/domain_conf.PNG)
----
--- Em segida iremos habilitar o arquivo com a ferramenta a2ensite:
+
+
+---> Em segida iremos habilitar o arquivo com a ferramenta a2ensite:
+
 ```
 $ sudo a2ensite grupo7.turma914.ifalara.local.conf
 ```
--- E vamos desabilitar o site padrão:
+
+---> E vamos desabilitar o site padrão:
+
 ```
 $ sudo a2dissite 000-default.conf
 ```
--- Teste para erros de configuração:
+
+---> Teste para erros de configuração:
+
 ```
 $ sudo apache2ctl configtest
 ```
--- Então iremos reiniciar o Apache:
+
+---> Então iremos reiniciar o Apache:
+
 ```
 $ sudo systemctl restart apache2
 ```
----	
+
+	
 ---> Pronto agora é só acessar novamente no navegador com o IP da máquina. 
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/a2ensite-configtest-restart.PNG)
 ![](/www/site.PNG)
-----
+
 
 ### BD
 
@@ -652,7 +686,7 @@ net/ipv4/ip_forwarding=1
 ...
 ```
 
-(remoção da marca de comentário)
+(remoção da marca "#" do comentário)
 
 
 [/etc/ufw/sysctl.conf](https://github.com/NanyDesu/trab_sred/blob/main/imagens/pt4_sysctl_conf.PNG)
@@ -678,33 +712,7 @@ LAN interface: ens192
 ```
 
 ```
-#!/bin/bash
-# /etc/rc.local
-# Default policy to drop all incoming packets.
-# Politica padrão para bloquear (drop) todos os pacotes de entrada
-iptables -P INPUT DROP
-iptables -P FORWARD DROP
-# Accept incoming packets from localhost and the LAN interface.
-# Aceita pacotes de entrada a partir das interfaces localhost e the LAN.
-iptables -A INPUT -i lo -j ACCEPT
-iptables -A INPUT -i enp0s8 -j ACCEPT
-# Accept incoming packets from the WAN if the router initiated the connection.
-# Aceita pacotes de entrada a partir da WAN se o roteador iniciou a conexao
-iptables -A INPUT -i enp0s3 -m conntrack \
---ctstate ESTABLISHED,RELATED -j ACCEPT
-# Forward LAN packets to the WAN.
-# Encaminha os pacotes da LAN para a WAN
-iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
-# Forward WAN packets to the LAN if the LAN initiated the connection.
-# Encaminha os pacotes WAN para a LAN se a LAN inicar a conexao.
-iptables -A FORWARD -i enp0s3 -o enp0s8 -m conntrack \
---ctstate ESTABLISHED,RELATED -j ACCEPT
-# NAT traffic going out the WAN interface.
-# Trafego NAT sai pela interface WAN
-iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
-# rc.local needs to exit with 0
-# rc.local precisa sair com 0
-exit 0
+
 ```
 
 (Recriação necessária do arquivo /etc/rc.local)
