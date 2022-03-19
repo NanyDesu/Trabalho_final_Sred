@@ -680,7 +680,7 @@ $ sudo hostnamectl set-hostname bd.grupo7.turma914.ifalara.local
 
 
 
-![ufw eneble & allow ssh](https://github.com/NanyDesu/Trabalho_final_Sred/images/GW/habilitar_firewall.png)
+![eneble_allow_ssh](images/GW/habilitar_firewall.png)
 
 
 
