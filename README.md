@@ -411,7 +411,7 @@ network:
             search: [grupo7.turma914.ifalara.local]
         ens192:
           dhcp4: false
-          addresses: [192.168.0.53/29]
+          addresses: [192.168.0.52/29]
     version: 2
 ```
 
@@ -657,27 +657,40 @@ $ ping google.com
 
 #### Iniciando:
 
+
+
+#### Mudaremos o nome da maquina. 
+
+```
+$ sudo hostnamectl set-hostname bd.grupo7.turma914.ifalara.local
+```
+
+---> Habilitar o firewall.
+
 ```
  sudo ufw enable
 ```
 
-(habilitar o firewall)
+---> Permitir acesso ssh.
 
 
 ```
  sudo ufw allow ssh
 ```
 
-(permitir acesso ssh)
 
-![ufw eneble & allow ssh](https://github.com/NanyDesu/trab_sred/blob/main/imagens/pt3_ufw_nable.PNG)
 
+![ufw eneble & allow ssh](https://github.com/NanyDesu/Trabalho_final_Sred/images/GW/habilitar_firewall.png)
+
+
+
+---> Encaminhamento de pacotes de wan para lan.
 
 ```
  sudo nano /etc/ufw/sysctl.conf
 ``` 
 
-(encaminhamento de pacotes de wan para lan)
+---> Remova a marca "#" do comentário.
 
 
 ```
@@ -686,11 +699,11 @@ net/ipv4/ip_forwarding=1
 ...
 ```
 
-(remoção da marca "#" do comentário)
+
+[/etc/ufw/sysctl.conf](images/GW/sysctl.conf.png)
 
 
-[/etc/ufw/sysctl.conf](https://github.com/NanyDesu/trab_sred/blob/main/imagens/pt4_sysctl_conf.PNG)
-
+---> Confira os nomes das interface interna e externa.
 
 ```
  ifconfig -a
@@ -701,26 +714,49 @@ WAN interface: ens160
 LAN interface: ens192
 ```
 
-(configurar nome da interface interna e externa)
 
 
-![ifconfig -a](https://github.com/NanyDesu/trab_sred/blob/main/imagens/pt2_ifconfig.PNG)
+![ifconfig -a](images/GW/nome_das_interfaces.png)
 
+
+---> Recriando o arquivo /etc/rc.local.
 
 ```
  sudo nano /etc/rc.local
 ```
 
 ```
+#!/bin/bash
 
+# /etc/rc.local
+
+# Default policy to drop all incoming packets.
+
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+
+# Accept incoming packets from localhost and the LAN interface.
+
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -i enp192 -j ACCEPT
+
+# Accept incoming packets from the WAN if the router initiated the connection.
+#
+iptables -A INPUT -i enp160 -m conntrack \
+
+# rc.local needs to exit with 0
+# rc.local precisa sair com 0
+exit 0
 ```
 
-(Recriação necessária do arquivo /etc/rc.local)
 
 
 
+![rclocal](images/GW/rc.local.png)
 
-![rclocal](https://github.com/NanyDesu/trab_sred/blob/main/imagens/pt5_rc_local.PNG)
+
+
+---> Torne o arquivo executável.
 
 
 ```
@@ -728,7 +764,7 @@ LAN interface: ens192
 ```
 
 
-(tornando o arquivo executável)
+---> Verifique a atividade do firewall.
 
 
 ```
@@ -741,44 +777,55 @@ ou
  systemctl status ufw.service
 ```
 
-(verificando a atividade do firewall)
+![status_firewall](images/GW/status_firewall.png)
 
+
+
+---> Reinie a máquina.
 
 ```
  sudo reboot
 ```
 
-(reiniciando a máquina)
 
-
-![chmod-reboot](https://github.com/NanyDesu/trab_sred/blob/main/imagens/pt6_chmod_reboot.PNG)
-
-
-
+---> Recebe de pacotes na porta 445 e 139 da interface externa do gw e encaminha para o servidor interno na porta 445 e 139.
 
 
         
-```bash
-iptables -A PREROUTING -t nat -i ens192 -p tcp –-dport 445 -j DNAT –-to 10.9.14.100:445
-iptables -A FORWARD -p tcp -d 10.9.14.100 –-dport 445 -j ACCEPT
+```
+#Recebe pacotes na porta 445 da interface externa do gw e encaminha para o servidor interno na porta 445
+iptables -A PREROUTING -t nat -i enp160 -p tcp –-dport 445 -j DNAT –-to 10.9.14.122:445
+iptables -A FORWARD -p tcp -d 10.9.14.122 –-dport 445 -j ACCEPT
+
 #Recebe pacotes na porta 139 da interface externa do gw e encaminha para o servidor interno na porta 139
-iptables -A PREROUTING -t nat -i ens192 -p tcp –-dport 139 -j DNAT –-to 10.9.14.100:139
-iptables -A FORWARD -p tcp -d 10.9.14.100 –-dport 445 -j ACCEPT
+iptables -A PREROUTING -t nat -i enp160 -p tcp –-dport 139 -j DNAT –-to 10.9.14.122:139
+iptables -A FORWARD -p tcp -d 10.9.14.122 –-dport 445 -j ACCEPT
 ```
 
 
-(Recebe de pacotes na porta 445 da interface externa do gw e encaminha para o servidor interno na porta 445)
 
 
+---> Recebe pacotes na porta 53 da interface externa do gw e encaminha para o servidor DNS Master interno na porta 53.
 
 
-```bash
-iptables -A PREROUTING -t nat -i ens160 -p tcp –-dport 53 -j DNAT –-to 10.9.14.103:53
-iptables -A FORWARD -p udp -d 10.9.14.103 –-dport 53 -j ACCEPT
+```
+#Recebe pacotes na porta 53 da interface externa do gw e encaminha para o servidor DNS Mas interno na porta 53
+iptables -A PREROUTING -t nat -i enp160 -p tcp –-dport 53 -j DNAT –-to 10.9.14.107:53
+iptables -A FORWARD -p udp -d 10.9.14.107 –-dport 53 -j ACCEPT
 ```
 
 
-(Recebe pacotes na porta 53 da interface externa do gw e encaminha para o servidor DNS Master interno na porta 53)
+
+---> Recebe pacotes na porta 80 da interface externa do gw e encaminha para o servidor Web na porta 80.
+
+```
+#Recebe pacotes na porta 80 da interface externa do gw e encaminha para o servidor Web na porta 80
+iptables -A PREROUTING -t nat -i enp160 -p tcp –-dport 80 -j DNAT –-to 10.9.14.223:53
+iptables -A FORWARD -p udp -d 10.9.14.223 –-dport 53 -j ACCEPT
+```
+
+
+![rc.local](images/GW/rc.local_encaminhar_dados.png)
 
 
 
