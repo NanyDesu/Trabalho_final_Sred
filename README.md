@@ -407,7 +407,7 @@ network:
             addresses:
                - 10.9.14.126
                - 10.9.14.109
-            search: [grupo4.turma914.ifalara.local]
+            search: [grupo7.turma914.ifalara.local]
         ens192:
           dhcp4: false
           addresses: [192.168.0.29/29]
@@ -430,7 +430,7 @@ $ systemd-resolve --status ens160
 ---> Para finalizar o processo iremos ver se o nosso serviço DNS revolve o DNS do google:
 ````
 $ ping google.com
-![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/dig-system_resolve-ping.PNG)
+![](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/dig-system_resolve-ping.PNG)
 ```
 ---
 
@@ -476,7 +476,7 @@ Mar 12 00:00:37 www systemd[1]: Reloading The Apache HTTP Server.
 Mar 12 00:00:37 www apachectl[129422]: AH00558: apache2: Could not reliably determine the ser>
 Mar 12 00:00:37 www systemd[1]: Reloaded The Apache HTTP Server.
 ```
-![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/status_apache2.PNG)
+![](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/status_apache2.PNG)
 ```
 -- Então para acessar o servidor web basta ir ao navegador e colocar o IP da maquina "www", onde foi feita a instalação do Aopache2.
 ---
@@ -513,8 +513,8 @@ $ sudo nano /etc/apache2/sites-available/grupo7.turma914.ifalara.local.conf
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 ```
-![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/domain_conf.PNG)
-
+![](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/domain_conf.PNG)
+---
 -- Em segida iremos habilitar o arquivo com a ferramenta a2ensite:
 ```
 $ sudo a2ensite grupo7.turma914.ifalara.local.conf
@@ -533,7 +533,7 @@ $ sudo systemctl restart apache2
 ```
 ---	
 ---> Pronto agora é só acessar novamente no navegador com o IP da máquina. 
-![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/a2ensite-configtest-restart.PNG)
+![](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/a2ensite-configtest-restart.PNG)
 ![](/www/site.PNG)
 ----
 
