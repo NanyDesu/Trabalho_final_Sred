@@ -860,7 +860,7 @@ $ sudo nano /etc/samba/smb.conf
 ```
 ![smb_conf]()
 
----> Modifique o pasta public para apenas usuarios do grupo possam acessar:
+---> Modifique a pasta public para apenas os usuarios do grupo possam acessar:
 
 ```
 [public]
