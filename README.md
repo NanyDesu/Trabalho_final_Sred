@@ -547,7 +547,7 @@ $ sudo systemctl restart apache2
 #### Mudaremos o nome da maquina. 
 
 ```
-$ sudo hostnamectl set-hostname bd.grupo4.turma914.ifalara.local
+$ sudo hostnamectl set-hostname bd.grupo7.turma914.ifalara.local
 ```
 
 ![hostname](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/BD/hostname.PNG)
@@ -574,7 +574,7 @@ network:
             addresses:
                - 10.9.14.126
                - 10.9.14.109
-            search: [grupo4.turma914.ifalara.local]
+            search: [grupo7.turma914.ifalara.local]
         ens192:
           dhcp4: false
           addresses: [192.168.0.29/29]
@@ -594,7 +594,7 @@ $ sudo netplan apply
 #### Teste se está funcionando.
 
 ```
-$ dig @10.9.14.126 gw.grupo4.turma914.ifalara.local
+$ dig @10.9.14.126 gw.grupo7.turma914.ifalara.local
 ```
 
 #### Verifique se na linha "ANSWER SECTION:" apareceu que foi resolvido, com o dominio e o IP.
