@@ -430,7 +430,7 @@ $ systemd-resolve --status ens160
 ---> Para finalizar o processo iremos ver se o nosso serviço DNS revolve o DNS do google:
 ````
 $ ping google.com
-![](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/dig-system_resolve-ping.PNG)
+![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/dig-system_resolve-ping.PNG)
 ```
 ---
 
