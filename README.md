@@ -34,27 +34,27 @@
 	
 ---
 
-### [NS1](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/NS1)	
+## [NS1](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/NS1)	
 	
 ---
 
 
-### [NS2](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/NS2)	
+## [NS2](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/NS2)	
 
 
 ---
 
 	
-### [www](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/WWW)	
+## [www](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/WWW)	
 	
 	
 ---
 
-### [BD](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/BD)
+## [BD](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/BD)
 	
 ---
 
-### [SAMBA](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/SAMBA)	
+## [SAMBA](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/SAMBA)	
 
 	
 ---
@@ -68,6 +68,6 @@
 ---
 
 	
-### [Acesse aqui os testes das máquinas](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/images/teste)
+## [Acesse aqui os testes das máquinas](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/images/teste)
 	
 	
