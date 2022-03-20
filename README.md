@@ -444,8 +444,6 @@ network:
       addresses: [192.168.14.52/29]
       nameservers:
         addresses:
-          - 192.168.14.49
-          - 192.168.14.50
         search: [grupo7.turma914.ifalara.local]
   version: 2
 ```
