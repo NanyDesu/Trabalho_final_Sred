@@ -39,7 +39,7 @@
 	
 ---
 
- ## :stuck_out_tongue_winking_eye: [NS1](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/NS1)	
+## :stuck_out_tongue_winking_eye: [NS1](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/NS1)	
 	
 ---
 
