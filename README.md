@@ -693,7 +693,7 @@ network:
     version: 2
 ```
 
-![installer_config_smb]()
+![installer_config_smb](images/SMB/installer_cofig.png)
 
 
 #### Vamos aplicar as alterações.
@@ -725,7 +725,7 @@ $ systemd-resolve --status ens160
 $ ping google.com
 ```
 
-![resolve-ping_smb](
+![resolve_ping_smb](images/SMB/ping_google.png)
 
 
 
@@ -755,7 +755,7 @@ $ sudo systemctl status smbd
 ---> Iremos obter a seguinte resposta:
 
 
-![status_smb]()
+![status_smb](images/SMB/status_samba.png)
 
 
 
@@ -765,7 +765,7 @@ $ sudo systemctl status smbd
 $ netstat -an | grep LISTEN
 ```
 
-![grep-listen]()
+![grep_listen](images/SMB/listen1.png)
 
 
 
@@ -785,7 +785,7 @@ $ ls -la /etc/samba
 
 ---> Iremos obter a seguinte resposta:
 
-![etc/samba]()
+![etc/samba](images/SMB/smb.conf.png)
 
 
 ---> Usando o comando grep remova os comentarios dos arquivos.
@@ -858,9 +858,9 @@ $ sudo nano /etc/samba/smb.conf
    force create mode = 0777
    force directory mode = 0777
 ```
-![smb_conf]()
+![smb_conf](images/SMB/smb.conf.png)
 
----> Modifique a pasta public para apenas os usuarios do grupo possam acessar:
+---> Modifique a pasta public para que apenas os usuarios do grupo sambashare possam acessar:
 
 ```
 [public]
@@ -878,7 +878,7 @@ $ sudo nano /etc/samba/smb.conf
    #force directory mode = 0777
 ```
 
-![smb_conf_no]()
+![smb_conf_no](images/SMB/no_guest_smb.png)
 
 
 
@@ -899,7 +899,7 @@ $ netstat -an | grep LISTEN
 ---> Iremos obter a seguinte resposta:
 
 
-![ve_grep_listen]()
+![ve_grep_listen](images/SMB/listen2.png)
 
 
 
