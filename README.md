@@ -1368,3 +1368,27 @@ iptables -A FORWARD -p udp -d 10.9.14.223 –-dport 53 -j ACCEPT
 
 
 
+
+#### Em todas as máquinas: ``ns1``, ``ns2``, ``smb``, ``www`` e ``bd`` , indique que a máquina ``gw`` que é o nosso gateway:
+
+
+
+```
+$ sudo nano /etc/netplan/00-installer-config.yaml
+```
+
+---> Adicione na interface ens160:
+
+```
+#gateway4: 10.9.14.1
+```
+
+
+---> Adicione na interface ens192:
+
+```
+gateway4: 192.168.14.125
+```
+
+
+
