@@ -32,7 +32,7 @@
 	
 	
 	
-[Testes](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/images/teste)
+# [Acesse aqui os testes das máquinas](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/images/teste)
 	
 ### NS1
 
