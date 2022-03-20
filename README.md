@@ -1387,7 +1387,7 @@ $ sudo nano /etc/netplan/00-installer-config.yaml
 ---> Adicione na interface ens192:
 
 ```
-gateway4: 192.168.14.125
+gateway4: 192.168.14.49
 ```
 
 
