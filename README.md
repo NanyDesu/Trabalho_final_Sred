@@ -464,7 +464,7 @@ $ ifconfig
 ```
 
 
-![ifconfig]()
+![ifconfig](images/NS2/ifconfig.png)
 
 
 
