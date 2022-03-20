@@ -539,7 +539,7 @@ $ systemd-resolve --status
 $ ping google.com
 ```
 
-![google_ping](images/NS2/netplan_config.png)
+![google_ping](images/NS2/ping_google.com.png)
 
 
 
