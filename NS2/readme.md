@@ -158,3 +158,9 @@ $ ping google.com
 ```
 
 ![google_ping](images/NS2/ping_google.com.png)
+
+
+---
+
+
+## [Voltar para as tabelas/home](https://github.com/NanyDesu/Trabalho_final_Sred)
