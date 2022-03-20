@@ -189,3 +189,10 @@ $ sudo systemctl restart apache2
 ---> Pronto agora é só acessar novamente no navegador com o IP da máquina. 
 ![sudo nano /etc/netplan/00-installer-config.yaml](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/WWW/a2ensite-configtest-restart.PNG)
 ![](/www/site.PNG)
+
+
+
+---
+
+
+## [Voltar para as tabelas/home](https://github.com/NanyDesu/Trabalho_final_Sred)
