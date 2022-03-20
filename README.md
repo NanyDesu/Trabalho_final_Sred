@@ -30,6 +30,10 @@
 |Grupo7VM(www)| FQDN do WEB| www.grupo7.turma914.ifalara.local| 
 |Grupo7VM(bd) | FQDN do BD | bd.grupo7.turma914.ifalara.local|	
 	
+	
+	
+[Testes](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/images/teste)
+	
 ### NS1
 
 
