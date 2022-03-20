@@ -45,7 +45,7 @@
 ---
 
 	
-## [www](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/WWW)	
+## [WWW](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/WWW)	
 	
 	
 ---
@@ -61,7 +61,7 @@
 	
 	
 	
-### [GW](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/GW)
+## [GW](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/GW)
 	
 	
 	
