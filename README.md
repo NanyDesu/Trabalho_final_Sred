@@ -446,7 +446,7 @@ network:
   version: 2
 ```
 
-![installer_config_yaml]()
+![installer_config_yaml](images/NS2/netplan_config.png)
 
 
 
@@ -475,7 +475,7 @@ $ ifconfig
 $ sudo systemctl status bind9
 ```
 
-![status_bind9]()
+![status_bind9](images/NS2/ifconfig.png)
 
 
 #### vamos editar o arquivo "named.conf.local" para informar o que esse é o DNS Slave e o ip do DNS do Master. 
@@ -507,7 +507,7 @@ zone "14.9.10.in-addr.arpa" IN {
 };
 ```
 
-![named_conf_local]()
+![named_conf_local](images/NS2/named_conf_local.png)
 
 
 
@@ -523,17 +523,23 @@ $ sudo named-checkconf
 
 #### Teste se está funcionando:
 
+
 ```
 $ systemd-resolve --status
 ```
 
+![syatemd_resolve](images/NS2/systemd_resolve.png)
+
+
+
 #### Teste se o DNS está retornando o do google.
+
 
 ```
 $ ping google.com
 ```
 
-![google_ping]()
+![google_ping](images/NS2/netplan_config.png)
 
 
 
