@@ -73,6 +73,6 @@
 ---
 
 	
-## [Testes](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/images/teste)
+## [TESTES](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/images/teste)
 	
 	
