@@ -785,7 +785,7 @@ $ ls -la /etc/samba
 
 ---> Iremos obter a seguinte resposta:
 
-![etc/samba](images/SMB/smb.conf.png)
+![etc/samba](images/SMB/etc_samba.png)
 
 
 ---> Usando o comando grep remova os comentarios dos arquivos.
