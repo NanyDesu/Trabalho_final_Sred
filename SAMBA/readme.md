@@ -360,3 +360,7 @@ $ sudo chgrp sambashare /samba/public
 ![teste_smb_ls]()
 
 
+---
+
+
+## [Voltar para as tabelas/home](https://github.com/NanyDesu/Trabalho_final_Sred)
