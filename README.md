@@ -31,6 +31,11 @@
 |Grupo7VM(bd) | FQDN do BD | bd.grupo7.turma914.ifalara.local|	
 	
 
+
+
+	
+# Instalação e configuração das máquinas
+
 	
 ---
 
