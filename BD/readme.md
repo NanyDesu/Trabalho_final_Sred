@@ -76,3 +76,8 @@ $ ping google.com
 
 ![resolve-ping](https://github.com/NanyDesu/Trabalho_final_Sred/blob/main/images/BD/dig-system_resolve-ping.PNG)
 
+
+---
+
+
+## [Voltar para as tabelas/home](https://github.com/NanyDesu/Trabalho_final_Sred)
