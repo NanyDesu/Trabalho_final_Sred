@@ -39,40 +39,38 @@
 	
 ---
 
-## [NS1](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/NS1)	
+ ## :stuck_out_tongue_winking_eye: [NS1](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/NS1)	
 	
 ---
 
 
-## [NS2](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/NS2)	
+## :smiley: [NS2](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/NS2)	
 
 
 ---
 
 	
-## [WWW](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/WWW)	
+## :kissing: [WWW](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/WWW)	
 	
 	
 ---
 
-## [BD](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/BD)
+## :grin: [BD](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/BD)
 	
 ---
 
-## [SAMBA](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/SAMBA)	
+## :stuck_out_tongue_closed_eyes: [SAMBA](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/SAMBA)	
 
 	
 ---
 	
 	
-	
-## [GW](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/GW)
-	
+## :relaxed: [GW](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/GW)
 	
 	
 ---
 
 	
-## [TESTES](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/images/teste)
+## :grimacing: [TESTES](https://github.com/NanyDesu/Trabalho_final_Sred/tree/main/images/teste)
 	
 	
